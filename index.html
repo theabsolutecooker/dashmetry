@@ -1,32 +1,56 @@
-function openGame() {
-    var gameUrl = "https://dashmetry.io/?suicidepreventionlifeline.org";
-    
-    // This creates a "fake" page in the browser's memory
-    var content = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>owen is the best</title>
-            <link rel="icon" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png">
-            <style>
-                body, html { margin:0; padding:0; height:100%; overflow:hidden; }
-                iframe { width:100%; height:100%; border:none; }
-            </style>
-        </head>
-        <body>
-            <iframe src="${gameUrl}"></iframe>
-        </body>
-        </html>
-    `;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Docs - Owen Is the BEST</title>
+    <link rel="icon" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png">
+    <style>
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            width: 100%;
+            overflow: hidden; 
+            background-color: white;
+        }
+        iframe { 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        }
+        /* Hidden "Panic Button" - Press 'P' to hide the game */
+        #decoy {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: white;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
 
-    // Turn that code into a "Blob" URL
-    var blob = new Blob([content], { type: 'text/html' });
-    var blobUrl = URL.createObjectURL(blob);
+    <iframe id="gameFrame" src="https://dashmetry.io/?suicidepreventionlifeline.org"></iframe>
 
-    // Open the Blob instead of about:blank
-    var win = window.open(blobUrl, '_blank');
-    
-    if (!win) {
-        alert("Pop-ups are blocked! Check the address bar.");
-    }
-}
+    <div id="decoy">
+        <h1>History Essay - Draft 1</h1>
+        <p>The industrial revolution was a period of significant change...</p>
+    </div>
+
+    <script>
+        // Emergency Hide Feature: Press the 'P' key to hide the game instantly
+        document.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'p') {
+                document.getElementById('gameFrame').style.display = 'none';
+                document.getElementById('decoy').style.display = 'block';
+                document.title = "Google Docs - History Essay";
+            }
+        });
+    </script>
+
+</body>
+</html>
