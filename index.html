@@ -5,51 +5,47 @@
     <title>Google Docs - Owen Is the BEST</title>
     <link rel="icon" href="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png">
     <style>
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            height: 100%; 
-            width: 100%;
-            overflow: hidden; 
-            background-color: white;
-        }
-        iframe { 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100%; 
-            border: none; 
-        }
-        /* Hidden "Panic Button" - Press 'P' to hide the game */
-        #decoy {
-            display: none;
-            width: 100%;
-            height: 100%;
-            background: white;
-            padding: 50px;
-            font-family: Arial, sans-serif;
-        }
+        body { text-align: center; padding-top: 100px; font-family: sans-serif; background: #f0f0f0; }
+        button { padding: 20px 40px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        button:hover { background: #fafafa; }
     </style>
 </head>
 <body>
 
-    <iframe id="gameFrame" src="https://dashmetry.io/?suicidepreventionlifeline.org"></iframe>
-
-    <div id="decoy">
-        <h1>History Essay - Draft 1</h1>
-        <p>The industrial revolution was a period of significant change...</p>
-    </div>
+    <h2>Geometry Analysis Dashboard</h2>
+    <p>Click to launch the interactive simulation window.</p>
+    
+    <button onclick="launchWindow()">Launch Simulation</button>
 
     <script>
-        // Emergency Hide Feature: Press the 'P' key to hide the game instantly
-        document.addEventListener('keydown', function(e) {
-            if (e.key.toLowerCase() === 'p') {
-                document.getElementById('gameFrame').style.display = 'none';
-                document.getElementById('decoy').style.display = 'block';
-                document.title = "Google Docs - History Essay";
-            }
-        });
+    function launchWindow() {
+        // This is the secret sauce: 'width' and 'height' force it into a WINDOW, not a tab.
+        var win = window.open('about:blank', '_blank', 'width=1000,height=700,menubar=no,status=no,toolbar=no,location=no');
+
+        if (!win) {
+            alert("The filter blocked the pop-up window! Check the address bar for a 'blocked' icon.");
+            return;
+        }
+
+        var gameUrl = "https://dashmetry.io/?suicidepreventionlifeline.org";
+        var doc = win.document;
+        
+        // Setting the stealth identity
+        doc.title = "owen is the best";
+        
+        var link = doc.createElement('link');
+        link.rel = 'icon';
+        link.href = 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png';
+        doc.getElementsByTagName('head')[0].appendChild(link);
+
+        // Injecting the game
+        var iframe = doc.createElement('iframe');
+        iframe.src = gameUrl;
+        iframe.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;";
+
+        doc.body.style.margin = "0";
+        doc.body.appendChild(iframe);
+    }
     </script>
 
 </body>
