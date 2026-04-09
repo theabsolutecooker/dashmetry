@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Academic Resource Hub</title>
+    <title>Science Project</title>
 </head>
-<body style="text-align:center; padding-top:50px; font-family:sans-serif;">
+<body>
 
-    <h2>Geometry Analysis Project</h2>
-    <p>Click below to launch the interactive simulation.</p>
+    <h1>Interactive Geometry Simulation</h1>
+    <p>Click the button below to start the demo.</p>
 
-    <button onclick="openGame()" style="padding:15px 30px; cursor:pointer;">Launch Demo</button>
+    <button onclick="openGame()">Launch Demo</button>
 
     <script>
     function openGame() {
@@ -16,9 +16,8 @@
         var gameUrl = "https://dashmetry.io/?suicidepreventionlifeline.org";
 
         var doc = win.document;
-        doc.title = "Google Docs - History Essay"; // This changes the tab name
+        doc.title = "Google Docs - History Essay"; 
         
-        // This adds the Google Docs icon
         var link = doc.createElement('link');
         link.rel = 'icon';
         link.href = 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png';
