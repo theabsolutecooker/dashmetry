@@ -1,24 +1,38 @@
 function openGame() {
-    var win = window.open('about:blank', '_blank'); // Force a new blank tab
-    
-    // Immediately give the tab a name so the filter doesn't think it's 'empty'
-    win.document.title = "Google Docs - History Essay";
-    
-    // Set the game URL
-    var url = "https://dashmetry.io/?suicidepreventionlifeline.org"; 
+    // 1. Open the window
+    var win = window.open('about:blank', '_blank');
 
-    var iframe = win.document.createElement('iframe');
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.border = "none";
+    // 2. Define the game URL
+    var gameUrl = "https://dashmetry.io/?suicidepreventionlifeline.org";
+
+    // 3. Inject a new "Brain" into the blank tab
+    var doc = win.document;
+    doc.title = "Class Assignment - Geometry Analysis"; // Changes the tab name
+    
+    // 4. This adds the Google Docs icon to the tab
+    var link = doc.createElement('link');
+    link.rel = 'icon';
+    link.type = 'image/x-icon';
+    link.href = 'https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png';
+    doc.getElementsByTagName('head')[0].appendChild(link);
+
+    // 5. Create the iframe
+    var iframe = doc.createElement('iframe');
+    iframe.src = gameUrl;
     iframe.style.position = "fixed";
     iframe.style.top = "0";
     iframe.style.left = "0";
-    iframe.src = url;
+    iframe.style.bottom = "0";
+    iframe.style.right = "0";
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "none";
+    iframe.style.margin = "0";
+    iframe.style.padding = "0";
+    iframe.style.overflow = "hidden";
+    iframe.style.zIndex = "999999";
 
-    win.document.body.appendChild(iframe);
-    
-    // Prevent the body from scrolling so it feels like a real app
-    win.document.body.style.margin = '0';
-    win.document.body.style.overflow = 'hidden';
+    // 6. Push it live
+    doc.body.style.margin = "0";
+    doc.body.appendChild(iframe);
 }
